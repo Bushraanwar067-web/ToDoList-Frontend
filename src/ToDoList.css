@@ -1,0 +1,202 @@
+/* ===============================
+   MAIN CONTAINER
+=================================*/
+.ToDoList {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #00c9ff);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Loading State */
+.ToDoList.loading {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* ===============================
+   BACK BUTTON
+=================================*/
+.back {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #73d8f1;
+    color: #0f2027;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.back:hover {
+    background: #00f2fe;
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   HEADING
+=================================*/
+.ToDoList h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===============================
+   INPUT SECTION
+=================================*/
+.box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+}
+
+/* Input */
+.box input {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    width: 180px;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    color: #0f2027;
+}
+
+.box input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00c9ff;
+}
+
+/* Button */
+.box button {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    background: #00f2fe;
+    color: #003344;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.box button:hover {
+    background: #4facfe;
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   ITEM STYLE
+=================================*/
+.item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: slideUp 0.4s ease forwards;
+}
+
+.item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+}
+
+/* Checked Item */
+.item.checked {
+    background: rgba(0, 255, 170, 0.3);
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* Label */
+.label {
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+/* Spacer */
+.flex {
+    flex: 1;
+}
+
+/* Trash Icon */
+.trash {
+    font-size: 18px;
+    color: #ff6b6b;
+    transition: all 0.3s ease;
+}
+
+.trash:hover {
+    transform: scale(1.2) rotate(10deg);
+    color: #ff0000;
+}
+
+/* ===============================
+   ANIMATIONS
+=================================*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   RESPONSIVE
+=================================*/
+@media (max-width: 500px) {
+    .box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .box input {
+        width: 100%;
+    }
+
+    .box button {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
