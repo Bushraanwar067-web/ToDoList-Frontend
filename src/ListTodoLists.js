@@ -48,7 +48,7 @@ function ListToDoLists({
             New
             </button>
           </div>
-            {listSummaries.map((summary) => {
+            listSummaries.map((summary) => {
             return (
                 <div
                     key={summary.id}
@@ -63,7 +63,7 @@ function ListToDoLists({
                         onClick={(evt) => {
                             evt.stopPropagation();
                             handleDeleteToDoList(summary.id);
-                        }}
+                        }
                         >
                          <BiSolidTrash />
                      </span>
