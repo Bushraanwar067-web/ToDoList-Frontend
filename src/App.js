@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   async function reloadData() {
-    const response = await axios.get("https://to-do-list-backend-dusky.vercel.app/api/lists");
+    const response = await axios.get("http://localhost:8000/api/lists");
     const data = await response.data;
     setListSummaries(data);
   }
