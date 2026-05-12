@@ -4,6 +4,8 @@ import "./App.css";
 import ListToDoLists from "./ListTodoLists";
 import ToDoList from "./ToDoList";
 
+const API_URL = process.env.REACT_APP_API_URL
+
 function App() {
   const [listSummaries, setListSummaries] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -13,8 +15,9 @@ function App() {
   }, []);
 
   async function reloadData() {
-    const response = await axios.get("http://localhost:8000/api/lists");
-    const data = await response.data;
+    // const response = await axios.get("/api/lists");
+      const response = await axios.get(`${API_URL}/api/lists`);
+      const data = await response.data;
     setListSummaries(data);
   }
 
@@ -24,7 +27,8 @@ function App() {
         name: newName,
       };
 
-      await axios.post(`/api/lists`, newListData);
+      // await axios.post(`/api/lists`, newListData);
+      await axios.post(`${API_URL}/api/lists`, newListData);
       reloadData().catch(console.error);
     };
     updateData();
@@ -32,7 +36,8 @@ function App() {
 
   function handleDeleteToDoList(id) {
     const updateData = async () => {
-      await axios.delete(`/api/lists/${id}`);
+      // await axios.delete(`/api/lists/${id}`);
+        await axios.delete(`${API_URL}/api/lists/${id}`);
       reloadData().catch(console.error);
     };
     updateData();
