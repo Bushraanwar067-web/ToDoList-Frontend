@@ -3,13 +3,16 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { BiSolidTrash } from "react-icons/bi";
 
+const API_URL = process.env.REACT_APP_API_URL
+
 function ToDoList({ listId, handleBackButton }) {
     let labelRef = useRef();
     const [listData, setListData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`/api/lists/${listId}`);
+            // const response = await axios.get(`/api/lists/${listId}`);
+            const response = await axios.get(`${API_URL}/api/lists/${listId}`);
             const newData = await response.data;
             setListData(newData);
         };
@@ -18,7 +21,8 @@ function ToDoList({ listId, handleBackButton }) {
 
     function handleCreateItem(label) {
         const updateData = async () => {
-            const response = await axios.post(`/api/lists/${listData.id}/items/`, {
+            // const response = await axios.post(`/api/lists/${listData.id}/items/`, {
+            const response = await axios.post(`${API_URL}/api/lists/${listData.id}/items/`,{
               label: label,
             });
             setListData(await response.data);
@@ -28,8 +32,11 @@ function ToDoList({ listId, handleBackButton }) {
 
     function handleDeleteItem(id) {
         const updateData = async () => {
-             const response = await axios.delete(
-                `/api/lists/${listData.id}/items/${id}`
+            //  const response = await axios.delete(
+            //     `/api/lists/${listData.id}/items/${id}`
+            // );
+            const response = await axios.delete(
+                `${API_URL}/api/lists/${listData.id}/items/${id}`
             );
             setListData(await response.data);
         };
@@ -38,8 +45,10 @@ function ToDoList({ listId, handleBackButton }) {
 
     function handleCheckToggle(itemId, newState) {
         const updateData = async () => {
+            // const response = await axios.patch(
+            //  `/api/lists/${listData.id}/checked_state`,
             const response = await axios.patch(
-             `/api/lists/${listData.id}/checked_state`,
+              `${API_URL}/api/lists/${listData.id}/checked_state`,
                  {
                     item_id: itemId,
                     checked_state: newState,
